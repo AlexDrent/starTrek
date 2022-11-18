@@ -1,0 +1,50 @@
+/* .animationContainer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: grid;
+	width: 100%;
+	box-sizing: border-box;
+	grid-template-columns: 1fr 1fr;
+	padding: 20px;
+    column-gap: 50px;
+    grid-template-columns: auto auto auto;
+} */
+
+.transporter {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+#leftTransporter {
+    background-color: gold;
+    left: 0;
+}
+
+#rightTransporter {
+    background-color: red;
+    right: 0;
+}
+
+/* .left {
+	text-align: left;
+} */
+
+/* .right {
+	text-align: right;
+} */
+
+/* body{
+    background-image: url("river.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+} */

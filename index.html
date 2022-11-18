@@ -5,17 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>StarTrek: The Trekkoning</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.global.js"></script>
+    <script defer src="Client.js"></script>
 </head>
 
 <body>
-    <p>some *more* stuff
 
-    </p>
+    <div id="app">
+        <div class="animationContainer">
+            <div class="left">
+                <img src="" id="leftTransporter" class="transporter">
+                <img src="" id="leftCrew" class="crew">
+            </div>
+
+            <div class="right">
+                <img src="" id="rightTransporter" class="transporter">
+                <img src="" id="rightCrew" class="crew">
+            </div>
+        </div>
+        <div class="center">
+            <button id="transport" style="text-align: center; width: 200px; height: 50px;" class="button" type="button"
+                v-on:click="reset()">Beam us down, Scotty!</button>
+        </div>
+    </div>
 </body>
 
 </html>
-
 
 <!--
     1) Cabbage/Goat/Wolf/Boat like intro-sequence with characters "beaming down"
