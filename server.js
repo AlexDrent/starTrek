@@ -3,6 +3,8 @@ var server = express();
 bodyParser = require("body-parser");
 server.use(bodyParser.urlencoded({extended: true}));
 
+let highscores = {};
+
 server.post("/addNewScore", function(req,res){
     
     res.end();
