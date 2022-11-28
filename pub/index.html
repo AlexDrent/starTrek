@@ -29,6 +29,20 @@
             <button id="transport" style="text-align: center; width: 200px; height: 50px;" class="button" type="button"
                 v-on:click="reset()">Beam us down, Scotty!</button>
         </div>
+
+        <div id="canvEtc">
+            <h2 id="tittel">{{message}}</h2>
+            <canvas class="left" width="400" height="400" ref="splineDisplay">
+                Sorry, your browser doesn't support canvas.
+            </canvas>
+
+            <br>
+
+            <input type="color" v-model.string="backColor" v-on:input="redrawEverything">&nbsp;
+            <input type="number" min="1" max="100" v-model.number="linesPerNode" v-on:input="redrawEverything">
+            <button id="butt" type="button" v-on:click="addNode">Add Node</button>
+        </div>
+
     </div>
 </body>
 
