@@ -9,11 +9,19 @@ server.post("/addNewScore", function(req,res){
     if(!highScores[req.body.user]) highScores[req.body.user] = 0;
     if(highScores.length <= 5){
         highScores[req.body.user]++;
+        res.write("Your score has been recorded!");
     }
     else {
-         //check if new score is higher than the current 5
-        //if yes, replace 
-        //if no, "sorry, try again"
+        let checkScore = highScores[req.body.user];
+        for(let currentScore in highScores){
+            if(checkScore >= highScores[req.body.currentScore]){
+                highScores[req.body.currentScore] = checkScore;
+                res.write("Congrats, you've earned a spot on the high score board!");
+            }
+            else{
+                res.write("Sorry your score was too low, try again!")
+            }
+        }
     }
     res.end();
 });
@@ -21,7 +29,6 @@ server.post("/addNewScore", function(req,res){
 server.get("/topFiveScores", function (req, res) {
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "no-cache");
-    //are we doing a cache?
     highScores.sort(function(x,y){
         return y - x;
     });
@@ -34,7 +41,13 @@ server.get("/topFiveScores", function (req, res) {
 server.get("/highestScore", function(req,res){
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "no-cache");
-    //check for max
+    highScores.sort(function(x,y){
+        return y - x;
+    });
+    for(let top in highScores){
+        res.write(req.query.top + "has all time highscore of " + highScores[req.body.top] + "points \n");
+        break;
+    }
     res.end();
 });
 
