@@ -10,9 +10,11 @@ server.post("/addNewScore", function(req,res){
     if(highScores.length <= 5){
         highScores[req.body.user]++;
     }
-    //after, check if new score is higher than the current 5
-    //if yes, replace 
-    //if no, "sorry, try again"
+    else {
+         //check if new score is higher than the current 5
+        //if yes, replace 
+        //if no, "sorry, try again"
+    }
     res.end();
 });
 
@@ -20,10 +22,12 @@ server.get("/topFiveScores", function (req, res) {
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "no-cache");
     //are we doing a cache?
+    highScores.sort(function(x,y){
+        return y - x;
+    });
     for(let topScores in highScores){
         res.write(req.query.topScores + " has " + highScores[req.body.topScores] + "points \n");
     }
-    //way to get points in max to min order
     res.end();
 });
 
