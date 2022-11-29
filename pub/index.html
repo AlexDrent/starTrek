@@ -42,6 +42,22 @@
             <input type="number" min="1" max="100" v-model.number="linesPerNode" v-on:input="redrawEverything">
             <button id="butt" type="button" v-on:click="addNode">Add Node</button>
         </div>
+        <!-- thinking the gets can only be clicked before the game starts and post obviously after-->
+        <div>
+            <form action="/topFiveScores" method="get">
+                <label for="fScores">Get list of top high scores: </label>
+                <input type="submit" value="Get List">
+            </form>
+            <form action="/highestScore" method="get">
+                <label for="highest">View all-time high score: </label>
+                <input type="submit" value="Get Score">
+            </form>
+            <form action="/addNewScore" method="post">
+                <label for="person">Enter 3 letter username: </label>
+                <input type="text" id="person" name="user">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
 
     </div>
 </body>
@@ -53,7 +69,7 @@
     2) That acts as the start of the game
     3) Space invaders style client gameplay after intro, character can move left or right,
         either tackle OR shoot bad guys that gradually fall down from top of screen
-        The game uses canvas, and you loose a life by missing a Gorn (they fall past the bottom
+        The game uses canvas, and you lose a life by missing a Gorn (they fall past the bottom
         of the canvas), you gain points by successfully "tackling" Gorn. Enemies fall in colomns.
         Kirk can only move into columns (in a jumpy way). Points increase by 1701 each time.
             *timed end if we have time
