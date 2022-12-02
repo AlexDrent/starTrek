@@ -14,14 +14,10 @@
 <body>
 
     <div id="app">
-        <div><!-- thinking the gets can only be clicked before the game starts and post obviously after-->
+        <div><!-- get is when game over, post if they beat high score-->
             <form action="/topFiveScores" method="get">
                 <label for="fScores">Get list of top high scores: </label>
                 <input type="submit" value="Get List">
-            </form>
-            <form action="/highestScore" method="get">
-                <label for="highest">View all-time high score: </label>
-                <input type="submit" value="Get Score">
             </form>
             <form action="/addNewScore" method="post">
                 <label for="person">Enter 3 letter username: </label>
@@ -74,7 +70,7 @@
         Kirk can only move into columns (in a jumpy way). Points increase by 1701 each time.
             *timed end if we have time
     4) Server-side high score list - Using Ajax
-        -user can get top 5(?) high score list
+        -user can get top 5 high score list
             list includes
                 - 3 letter username
                 - score
