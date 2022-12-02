@@ -38,19 +38,6 @@ server.get("/topFiveScores", function (req, res) {
     res.end();
 });
 
-server.get("/highestScore", function(req,res){
-    res.set("Content-Type", "text/plain");
-    res.set("Cache-Control", "no-cache");
-    highScores.sort(function(x,y){
-        return y - x;
-    });
-    for(let top in highScores){
-        res.write(req.query.top + "has all time highscore of " + highScores[req.body.top] + "points \n");
-        break;
-    }
-    res.end();
-});
-
 server.use(express.static("./pub"));
 server.listen(80, function() {
     console.log("Server is now now running on port 80.");
