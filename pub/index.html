@@ -14,7 +14,19 @@
 <body>
 
     <div id="app">
-        <div><!-- thinking the gets can only be clicked before the game starts and post obviously after-->
+        <div id="canvEtc" class="center"> <!-- Actual playspace -->
+            <h2 id="tittel">{{message}}</h2>
+            <canvas class="left" width="800" height="600" ref="splineDisplay">
+                Sorry, your browser doesn't support canvas.
+            </canvas>
+
+            <br>
+
+            <input type="color" v-model.string="backColor" v-on:input="redrawEverything">&nbsp;
+        </div>
+
+
+        <div id="scoreList"><!-- thinking the gets can only be clicked before the game starts and post obviously after-->
             <form action="/topFiveScores" method="get">
                 <label for="fScores">Get list of top high scores: </label>
                 <input type="submit" value="Get List">
@@ -28,35 +40,6 @@
                 <input type="text" maxlength="3" id="person" name="user">
                 <input type="submit" value="Submit">
             </form>
-        </div>
-
-        <div class="animationContainer">
-            <div class="left">
-                <img src="" id="leftTransporter" class="transporter">
-                <img src="" id="leftCrew" class="crew">
-            </div>
-
-            <div class="right">
-                <img src="" id="rightTransporter" class="transporter">
-                <img src="" id="rightCrew" class="crew">
-            </div>
-        </div>
-        <div class="center">
-            <button id="transport" style="text-align: center; width: 200px; height: 50px;" class="button" type="button"
-                v-on:click="reset()">Beam us down, Scotty!</button>
-        </div>
-
-        <div id="canvEtc">
-            <h2 id="tittel">{{message}}</h2>
-            <canvas class="left" width="400" height="400" ref="splineDisplay">
-                Sorry, your browser doesn't support canvas.
-            </canvas>
-
-            <br>
-
-            <input type="color" v-model.string="backColor" v-on:input="redrawEverything">&nbsp;
-            <input type="number" min="1" max="100" v-model.number="linesPerNode" v-on:input="redrawEverything">
-            <button id="butt" type="button" v-on:click="addNode">Add Node</button>
         </div>
 
     </div>
