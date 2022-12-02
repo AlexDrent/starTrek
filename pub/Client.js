@@ -28,6 +28,7 @@ function keyMapper() {
         buffer.push(key);
         lastKeyTime = currentTime;
 
+
         console.log(buffer)
     });
 }
@@ -78,6 +79,9 @@ let myApp = Vue.createApp({
         deleteNode(indexToDelete) {
 
             this.redrawEverything();
+        },
+        movePlayer() {
+
         },
     },
 
