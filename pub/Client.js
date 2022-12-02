@@ -60,17 +60,24 @@ let myApp = Vue.createApp({
             this.ctx.lineTo(x2, y2); //draws to that location
             this.ctx.stroke(); //put ink down
         },
+        addBgImage() {
+            const img = new Image();
+            img.src = "img/back.png";
+            img.onload = () => {
+                this.ctx.drawImage(img, 0, 0);
+            };
+
+        },
         redrawEverything() {
-            this.ctx.fillStyle = this.backColor;
-            this.ctx.fillRect(0, 0, 400, 400);
-            //For the lines!
-            for (let i = 0; i < this.nodes.length - 1; i++) { // -1 here because we look ahead to draw to the next node
-                for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
-                    let n = this.nodes[i];
-                    let m = this.nodes[i + 1];
-                    this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
-                }
-            }
+            this.addBgImage();
+            
+            //For the lines! - KEEP for redraw reference
+                // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
+                //     let n = this.nodes[i];
+                //     let m = this.nodes[i + 1];
+                //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
+                // }
+
         },
         addNode() {
 
