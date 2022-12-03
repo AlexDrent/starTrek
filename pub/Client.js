@@ -1,6 +1,6 @@
 function randomPosition() {
     let positions = [0, 70, 140, 210, 280, 350, 420, 490, 560, 630];
-    let currentPos = positions[Math.floor(Math.random()*positions.length)];
+    let currentPos = positions[Math.floor(Math.random() * positions.length)];
     return currentPos;
 }
 //-------------------------------------------------------------------
@@ -61,6 +61,7 @@ let myApp = Vue.createApp({
             this.gornAttack();
             this.gornPlacement();
             this.playerPlacement();
+            this.drawScore();
         },
         deleteGorn(indexToDelete) {
 
@@ -84,7 +85,7 @@ let myApp = Vue.createApp({
             }
         },
         gornPlacement() {
-            for(i =0; i <= 2; i++){
+            for (i = 0; i <= 2; i++) {
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
@@ -93,7 +94,7 @@ let myApp = Vue.createApp({
                 }
             };
         },
-        hypoSpray(){
+        hypoSpray() {
             const hImg = new Image();
             hImg.src = "img/hypospray.png";
             var tile = 5;
@@ -104,7 +105,7 @@ let myApp = Vue.createApp({
                 }
             }
         },
-        playerPlacement(){
+        playerPlacement() {
             const pImg = new Image();
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
@@ -116,9 +117,10 @@ let myApp = Vue.createApp({
             //else missed
                 //hypoSpray called here and displayed
         },
-        reset(){
+
+        reset() {
             this.lives = 3;
-        }
+        },
     },
 
     computed: {

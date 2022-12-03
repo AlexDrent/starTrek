@@ -3,7 +3,7 @@
 }
 .center{
     text-align: center;
-    color:#ffd119;
+    color: lightyellow;
 }
 .paramount{
     text-align: center;
@@ -17,8 +17,11 @@
 }
 #trekkoning{
     font-size: 50px;
-    color: lightyellow;
+    color: #ffd119;
     font-family: 'Courier New', Courier, monospace;
+}
+#jsScore{
+    color: #ff3e30;
 }
 body{
     background-color: #040533;
