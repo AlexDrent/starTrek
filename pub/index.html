@@ -13,26 +13,22 @@
 
 <body>
     <div id="app">
-        <div id="canvEtc" class="center"> <!-- Actual playspace -->
-            <h2 id="tittel">{{message}}</h2>
+
+        <!-- Game Canvas -->
+        <div id="myCanvas" class="center"> <!-- Actual playspace -->
+            <h2 id="tittel"></h2>
             <canvas class="left" width="800" height="600" ref="splineDisplay">
                 Sorry, your browser doesn't support canvas.
             </canvas>
 
             <br>
-
-            <input type="color" v-model.string="backColor" v-on:input="redrawEverything">&nbsp;
         </div>
 
-
-        <div id="scoreList"><!-- thinking the gets can only be clicked before the game starts and post obviously after-->
+        <!-- Server Score List -->
+        <div id="scoreList">
             <form action="/topFiveScores" method="get">
                 <label for="fScores">Get list of top high scores: </label>
                 <input type="submit" value="Get List">
-            </form>
-            <form action="/highestScore" method="get">
-                <label for="highest">View all-time high score: </label>
-                <input type="submit" value="Get Score">
             </form>
             <form action="/addNewScore" method="post">
                 <label for="person">Enter 3 letter username: </label>
