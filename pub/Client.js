@@ -58,7 +58,7 @@ let myApp = Vue.createApp({
         },
         redrawEverything() {
             this.addBgImage();
-            this.hypoSpray();
+            this.gornAttack();
             this.gornPlacement();
             this.playerPlacement();
         },
@@ -98,10 +98,10 @@ let myApp = Vue.createApp({
             hImg.src = "img/hypospray.png";
             var tile = 5;
             hImg.onload = () => {
-            for (let i = 0; i < this.lives; i++){
-            this.ctx.drawImage(hImg, tile, 5);
-            tile += 50;
-            }
+                for (let i = 0; i < this.lives; i++){
+                this.ctx.drawImage(hImg, tile, 5);
+                tile += 50;
+                }
             }
         },
         playerPlacement(){
@@ -110,6 +110,11 @@ let myApp = Vue.createApp({
             pImg.onload = () => {
                 this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
+        },
+        gornAttack(){
+            //if caught
+            //else missed
+                //hypoSpray called here and displayed
         },
         reset(){
             this.lives = 3;
