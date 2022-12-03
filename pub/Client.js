@@ -58,6 +58,7 @@ let myApp = Vue.createApp({
         },
         redrawEverything() {
             this.addBgImage();
+            this.gornPlacement();
             
             //For the lines! - KEEP for redraw reference
                 // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
