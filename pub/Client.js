@@ -1,7 +1,7 @@
-function randomColor() {
-    let ret = "#";
-    for (let i = 0; i < 6; i++) ret += Math.floor(Math.random() * 16).toString(16);
-    return ret;
+function randomPosition() {
+    let positions = [50, 100 ,150, 200, 250, 300, 350, 400, 450];
+    let currentPos = positions[Math.floor(Math.random()*positions.length)];
+    return currentPos;
 }
 //-------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -94,9 +94,10 @@ let myApp = Vue.createApp({
             const gImg = new Image();
             gImg.src = "img/gorn.png";
             gImg.onload = () => {
-                this.ctx.drawImage(gImg, 1, 1, 75, 75);
+                const startHere = randomPosition;
+                this.ctx.drawImage(gImg, 0, startHere, 75, 75);
             };
-        }
+        },
     },
 
     computed: {
