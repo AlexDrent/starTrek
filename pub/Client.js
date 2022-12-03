@@ -18,6 +18,7 @@ function keyMapper() {
         const charList = 'abcdefghijklmnopqrstuvwxyz0123456789←→↓↑';
         const key = event.key.toLowerCase();
 
+
         const currentTime = Date.now();
 
         if (currentTime - lastKeyTime > 1000) {
@@ -28,7 +29,8 @@ function keyMapper() {
         lastKeyTime = currentTime;
 
 
-        console.log(buffer)
+        console.log(buffer);
+        return buffer[0];
     });
 }
 //---------------------------------------------------------------------------------
@@ -41,6 +43,7 @@ let myApp = Vue.createApp({
             linesPerNode: 20,
             ctx: null,
             nodes: [],
+            currentScore: 0,
         };
     },
 
@@ -52,6 +55,7 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(img, 0, 0);
             };
 
+<<<<<<< HEAD
             //Draw the line
             this.ctx.beginPath(); //clears out any previous draw paths.
             this.ctx.lineWidth = 2;
@@ -62,6 +66,12 @@ let myApp = Vue.createApp({
         redrawEverything() {
             this.addBgImage();
 
+=======
+        },
+        redrawEverything() {
+            this.addBgImage();
+            
+>>>>>>> 216af7f48881926e5e4fe4927e0195d1f4817453
             //For the lines! - KEEP for redraw reference
             // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
             //     let n = this.nodes[i];
@@ -79,8 +89,15 @@ let myApp = Vue.createApp({
             this.redrawEverything();
         },
         movePlayer() {
-
+            if (buffer[0] == "→") {
+                //if all the way right dont move
+                //else move +100 px
+            } else if (buffer[0] == "←") {
+                //if all the way left dont move
+                //else move -100 px
+            }
         },
+<<<<<<< HEAD
         gornPlacement() {
             const gImg = new Image();
             gImg.src = "img/gorn.png";
@@ -90,6 +107,14 @@ let myApp = Vue.createApp({
         },
         movePlayer() {
 
+=======
+    },
+
+    computed: {
+        addToScore(){
+            currentScore += 1701;
+            return currentScore;
+>>>>>>> 216af7f48881926e5e4fe4927e0195d1f4817453
         }
     },
 
