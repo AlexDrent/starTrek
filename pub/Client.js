@@ -114,6 +114,7 @@ let myApp = Vue.createApp({
         },
         gornAttack(){
             //if caught
+                //remove image
             //else missed
                 //hypoSpray called here and displayed
         },
