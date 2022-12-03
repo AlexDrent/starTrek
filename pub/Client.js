@@ -67,20 +67,20 @@ let myApp = Vue.createApp({
 
             this.redrawEverything();
         },
-        movePlayer(position) {
+        movePlayer(xCoord) {
             if (buffer[0] == "→") {
-                if (position > 630) {
-                    return position;
+                if (xCoord > 630) {
+                    this.redrawEverything();
                 } else {
-                    position += 70;
-                    return position;
+                    xCoord += 70;
+                    this.redrawEverything();
                 }
             } else if (buffer[0] == "←") {
-                if (position < 0) {
-                    return position;
+                if (xCoord < 0) {
+                    this.redrawEverything();
                 } else {
-                    position -= 70;
-                    return position;
+                    xCoord -= 70;
+                    this.redrawEverything();
                 }
             }
         },
