@@ -76,10 +76,10 @@ let myApp = Vue.createApp({
         movePlayer() {
             if (buffer[0] == "→") {
                 //if all the way right dont move
-                //else move +100 px
+                //else move +70 px
             } else if (buffer[0] == "←") {
                 //if all the way left dont move
-                //else move -100 px
+                //else move -70 px
             }
         },
         gornPlacement() {
