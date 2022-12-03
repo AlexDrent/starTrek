@@ -67,41 +67,41 @@ let myApp = Vue.createApp({
 
             this.redrawEverything();
         },
-        movePlayer(xCoord) {
+        movePlayer(position) {
             if (buffer[0] == "→") {
-                if (xCoord > 630) {
+                if (position > 630) {
                     this.redrawEverything();
                 } else {
-                    xCoord += 70;
+                    position += 70;
                     this.redrawEverything();
                 }
             } else if (buffer[0] == "←") {
-                if (xCoord < 0) {
+                if (position < 0) {
                     this.redrawEverything();
                 } else {
-                    xCoord -= 70;
+                    position -= 70;
                     this.redrawEverything();
                 }
             }
         },
         gornPlacement() {
-            //for (i = 0; i <= 2; i++) {
+            for (i = 0; i <= 2; i++) {
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
                     const startHere = randomColumn();
                     this.ctx.drawImage(gImg, startHere, 0, 67, 67);
                 }
-            //};
+            };
         },
         hypoSpray() {
             const hImg = new Image();
             hImg.src = "img/hypospray.png";
             var tile = 5;
             hImg.onload = () => {
-                for (let i = 0; i < this.lives; i++) {
-                    this.ctx.drawImage(hImg, tile, 5);
-                    tile += 50;
+                for (let i = 0; i < this.lives; i++){
+                this.ctx.drawImage(hImg, tile, 5);
+                tile += 50;
                 }
             }
         },
@@ -112,11 +112,11 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
         },
-        gornAttack() {
+        gornAttack(){
             //if caught
-            //remove image
+                //remove image
             //else missed
-            //removeLife called here
+                //removeLife called here
         },
 
         reset() {
@@ -125,19 +125,13 @@ let myApp = Vue.createApp({
         addToScore() {
             this.currentScore += 1701;
         },
-        removeLife() {
+        removeLife(){
             this.lives -= 0;
-        },
-        gameTime() {
-            setInterval(function() {
-                this.redrawEverything;
-                console.log("refresh");
-            }, 1000)
         }
     },
 
     computed: {
-        message: function() {
+        message: function () {
             if (this.lives == 0) {
                 return "Game Over! Final Score: " + this.currentScore + ". Submit score below?";
             } else {
@@ -149,6 +143,5 @@ let myApp = Vue.createApp({
     mounted() {
         this.ctx = this.$refs.splineDisplay.getContext("2d"); //gets the graphics context for drawing
         this.redrawEverything();
-        this.gameTime();
     }
 }).mount("#app");
