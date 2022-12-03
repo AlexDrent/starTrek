@@ -1,7 +1,7 @@
-function randomColor() {
-    let ret = "#";
-    for (let i = 0; i < 6; i++) ret += Math.floor(Math.random() * 16).toString(16);
-    return ret;
+function randomPosition() {
+    let positions = [100,200,300,400,500,600,700];
+    let currentPos = positions[Math.floor(Math.random()*positions.length)];
+    return currentPos;
 }
 //-------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,6 +58,7 @@ let myApp = Vue.createApp({
         },
         redrawEverything() {
             this.addBgImage();
+            this.gornPlacement();
             
             //For the lines! - KEEP for redraw reference
                 // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
@@ -83,6 +84,14 @@ let myApp = Vue.createApp({
                 //if all the way left dont move
                 //else move -100 px
             }
+        },
+        gornPlacement() {
+            const gImg = new Image();
+            gImg.src = "img/gorn.png";
+            gImg.onload = () => {
+                const startHere = randomPosition();
+                this.ctx.drawImage(gImg, startHere, 0, 75, 75);
+            };
         },
     },
 
