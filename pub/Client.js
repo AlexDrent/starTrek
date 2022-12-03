@@ -3,11 +3,6 @@ function randomColumn() {
     let currentCol = columns[Math.floor(Math.random() * columns.length)];
     return currentCol;
 }
-function dropRow(){
-    let rows = [0,24,48,72,96,120,144,168,192,216,240,264,288,312,338,360,384,408,432,456];
-    
-    
-}
 //-------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
