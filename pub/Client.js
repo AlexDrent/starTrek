@@ -45,6 +45,7 @@ let myApp = Vue.createApp({
             nodes: [],
             currentScore: 0,
             lives: 3,
+            gornYPos: 0,
         };
     },
 
@@ -90,7 +91,7 @@ let myApp = Vue.createApp({
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
                     const startHere = randomColumn();
-                    this.ctx.drawImage(gImg, startHere, 0, 67, 67);
+                    this.ctx.drawImage(gImg, startHere, this.gornYPos, 67, 67);
                 }
             };
         },
@@ -127,6 +128,13 @@ let myApp = Vue.createApp({
         },
         removeLife(){
             this.lives -= 0;
+        },
+        gameTime() {
+            setInterval(function() {
+                this.redrawEverything;
+                this.gornYPos += 40;
+                console.log("refresh");
+            }, 1000)
         }
     },
 
