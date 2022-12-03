@@ -83,7 +83,6 @@ let myApp = Vue.createApp({
             }
         },
         gornPlacement() {
-            //no more than 3 gorns at once 
             for(i =0; i <= 2; i++){
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
