@@ -61,7 +61,6 @@ let myApp = Vue.createApp({
             this.gornAttack();
             this.gornPlacement();
             this.playerPlacement();
-            this.drawScore();
         },
         deleteGorn(indexToDelete) {
 
