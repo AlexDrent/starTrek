@@ -83,6 +83,7 @@ let myApp = Vue.createApp({
             }
         },
         gornPlacement() {
+            //no more than 3 gorns at once 
             const gImg = new Image();
             gImg.src = "img/gorn.png";
             gImg.onload = () => {
@@ -101,7 +102,8 @@ let myApp = Vue.createApp({
             const pImg = new Image();
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
-                this.ctx.drawImage(pImg, 320, 410, 67, 67);
+                const moved = movePlayer();
+                this.ctx.drawImage(pImg, 320, moved, 67, 67);
             }
         }
     },
