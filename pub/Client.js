@@ -1,6 +1,6 @@
 function randomPosition() {
-    let positions = [100,200,300,400,500,600,700];
-    let currentPos = positions[Math.floor(Math.random()*positions.length)];
+    let positions = [100, 200, 300, 400, 500, 600];
+    let currentPos = positions[Math.floor(Math.random() * positions.length)];
     return currentPos;
 }
 //-------------------------------------------------------------------
@@ -59,18 +59,14 @@ let myApp = Vue.createApp({
         redrawEverything() {
             this.addBgImage();
             this.gornPlacement();
-            
+
             //For the lines! - KEEP for redraw reference
-                // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
-                //     let n = this.nodes[i];
-                //     let m = this.nodes[i + 1];
-                //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
-                // }
+            // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
+            //     let n = this.nodes[i];
+            //     let m = this.nodes[i + 1];
+            //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
+            // }
 
-        },
-        addGorn() {
-
-            this.redrawEverything();
         },
         deleteGorn(indexToDelete) {
 
@@ -93,10 +89,14 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(gImg, startHere, 0, 75, 75);
             };
         },
+        playPlacement() {
+            const pImg = new Image();
+            pImg.src = "img/"
+        }
     },
 
     computed: {
-        addToScore(){
+        addToScore() {
             currentScore += 1701;
             return currentScore;
         }
