@@ -46,20 +46,6 @@ let myApp = Vue.createApp({
     },
 
     methods: {
-        drawLine(x1, y1, x2, y2, color1, color2) {
-            //set up the line's gradient
-            let g = this.ctx.createLinearGradient(x1, y1, x2, y2);
-            g.addColorStop(0, color1);
-            g.addColorStop(1, color2);
-            this.ctx.strokeStyle = g;
-
-            //Draw the line
-            this.ctx.beginPath(); //clears out any previous draw paths.
-            this.ctx.lineWidth = 2;
-            this.ctx.moveTo(x1, y1); //moves your "pen" to that location
-            this.ctx.lineTo(x2, y2); //draws to that location
-            this.ctx.stroke(); //put ink down
-        },
         addBgImage() {
             const img = new Image();
             img.src = "img/back.png";
@@ -79,11 +65,11 @@ let myApp = Vue.createApp({
                 // }
 
         },
-        addNode() {
+        addGorn() {
 
             this.redrawEverything();
         },
-        deleteNode(indexToDelete) {
+        deleteGorn(indexToDelete) {
 
             this.redrawEverything();
         },
