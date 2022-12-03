@@ -1,5 +1,6 @@
 function randomPosition() {
-    let positions = [100,200,300,400,500,600];
+    //700x480
+    let positions = [0,70,140,210,280,350,420,490,560,630];
     let currentPos = positions[Math.floor(Math.random()*positions.length)];
     return currentPos;
 }
@@ -59,6 +60,7 @@ let myApp = Vue.createApp({
         redrawEverything() {
             this.addBgImage();
             this.gornPlacement();
+            this.playerPlacement();
             
             //For the lines! - KEEP for redraw reference
                 // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
@@ -86,12 +88,15 @@ let myApp = Vue.createApp({
             gImg.src = "img/gorn.png";
             gImg.onload = () => {
                 const startHere = randomPosition();
-                this.ctx.drawImage(gImg, startHere, 0, 75, 75);
+                this.ctx.drawImage(gImg, startHere, 0, 67, 67);
             };
         },
-        playPlacement(){
+        playerPlacement(){
             const pImg = new Image();
-            pImg.src = "img/"
+            pImg.src = "img/kirk.png";
+            pImg.onload = () => {
+                this.ctx.drawImage(pImg, 320, 410, 67, 67);
+            }
         }
     },
 
