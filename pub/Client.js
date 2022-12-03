@@ -46,6 +46,7 @@ let myApp = Vue.createApp({
             currentScore: 0,
             lives: 3,
             gornYPos: 0,
+            starthere: 0,
         };
     },
 
@@ -63,6 +64,7 @@ let myApp = Vue.createApp({
             this.gornPlacement();
             this.playerPlacement();
             this.hypoSpray();
+            this.gornYPos += 40;
         },
         deleteGorn(indexToDelete) {
 
@@ -90,10 +92,13 @@ let myApp = Vue.createApp({
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
-                    const startHere = randomColumn();
-                    this.ctx.drawImage(gImg, startHere, this.gornYPos, 67, 67);
+                    this.ctx.drawImage(gImg, this.startHere, this.gornYPos, 67, 67);
                 }
             //};
+        },
+        gornReset(){
+            this.startHere = randomColumn();
+            this.gornYPos = 0;
         },
         hypoSpray() {
             const hImg = new Image();
@@ -130,11 +135,7 @@ let myApp = Vue.createApp({
             this.lives -= 0;
         },
         gameTime() {
-            setInterval(function() {
-                this.redrawEverything;
-                this.gornYPos += 40;
-                console.log("refresh");
-            }, 1000)
+            setInterval(this.redrawEverything(), 1000);
         }
     },
 
@@ -152,5 +153,6 @@ let myApp = Vue.createApp({
         this.ctx = this.$refs.splineDisplay.getContext("2d"); //gets the graphics context for drawing
         this.redrawEverything();
         this.gameTime();
+        this.gornReset();
     }
 }).mount("#app");
