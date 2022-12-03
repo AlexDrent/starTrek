@@ -108,7 +108,7 @@ let myApp = Vue.createApp({
             const pImg = new Image();
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
-                this.ctx.drawImage(pImg, 280, 420, 67, 67);
+                this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
         },
         reset(){
