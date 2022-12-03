@@ -1,6 +1,6 @@
 function randomPosition() {
-    let positions = [50, 100, 150, 200, 250, 300, 350, 400, 450];
-    let currentPos = positions[Math.floor(Math.random() * positions.length)];
+    let positions = [100,200,300,400,500,600,700];
+    let currentPos = positions[Math.floor(Math.random()*positions.length)];
     return currentPos;
 }
 //-------------------------------------------------------------------
@@ -55,33 +55,17 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(img, 0, 0);
             };
 
-            <<
-            << << < HEAD
-            //Draw the line
-            this.ctx.beginPath(); //clears out any previous draw paths.
-            this.ctx.lineWidth = 2;
-            this.ctx.moveTo(x1, y1); //moves your "pen" to that location
-            this.ctx.lineTo(x2, y2); //draws to that location
-            this.ctx.stroke(); //put ink down
-        },
-        redrawEverything() {
-            this.addBgImage();
-
-            ===
-            === =
         },
         redrawEverything() {
             this.addBgImage();
             this.gornPlacement();
-
-            >>>
-            >>> > 216 af7f48881926e5e4fe4927e0195d1f4817453
+            
             //For the lines! - KEEP for redraw reference
-            // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
-            //     let n = this.nodes[i];
-            //     let m = this.nodes[i + 1];
-            //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
-            // }
+                // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
+                //     let n = this.nodes[i];
+                //     let m = this.nodes[i + 1];
+                //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
+                // }
 
         },
         addGorn() {
@@ -112,14 +96,11 @@ let myApp = Vue.createApp({
     },
 
     computed: {
-        addToScore() {
+        addToScore(){
             currentScore += 1701;
-            return currentScore; >>>
-            >>> > 216 af7f48881926e5e4fe4927e0195d1f4817453
+            return currentScore;
         }
     },
-
-    computed: {},
 
     mounted() {
         this.ctx = this.$refs.splineDisplay.getContext("2d"); //gets the graphics context for drawing
