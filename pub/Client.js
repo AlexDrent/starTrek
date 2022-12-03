@@ -1,5 +1,3 @@
-const { buffer } = require("stream/consumers");
-
 function randomColor() {
     let ret = "#";
     for (let i = 0; i < 6; i++) ret += Math.floor(Math.random() * 16).toString(16);
@@ -20,7 +18,6 @@ function keyMapper() {
         const charList = 'abcdefghijklmnopqrstuvwxyz0123456789←→↓↑';
         const key = event.key.toLowerCase();
 
-
         const currentTime = Date.now();
 
         if (currentTime - lastKeyTime > 1000) {
@@ -31,8 +28,7 @@ function keyMapper() {
         lastKeyTime = currentTime;
 
 
-        console.log(buffer);
-        return buffer[0];
+        console.log(buffer)
     });
 }
 //---------------------------------------------------------------------------------
@@ -49,6 +45,20 @@ let myApp = Vue.createApp({
     },
 
     methods: {
+        drawLine(x1, y1, x2, y2, color1, color2) {
+            //set up the line's gradient
+            let g = this.ctx.createLinearGradient(x1, y1, x2, y2);
+            g.addColorStop(0, color1);
+            g.addColorStop(1, color2);
+            this.ctx.strokeStyle = g;
+
+            //Draw the line
+            this.ctx.beginPath(); //clears out any previous draw paths.
+            this.ctx.lineWidth = 2;
+            this.ctx.moveTo(x1, y1); //moves your "pen" to that location
+            this.ctx.lineTo(x2, y2); //draws to that location
+            this.ctx.stroke(); //put ink down
+        },
         addBgImage() {
             const img = new Image();
             img.src = "img/back.png";
@@ -59,6 +69,7 @@ let myApp = Vue.createApp({
         },
         redrawEverything() {
             this.addBgImage();
+            this.gornPlacement();
             
             //For the lines! - KEEP for redraw reference
                 // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
@@ -68,23 +79,24 @@ let myApp = Vue.createApp({
                 // }
 
         },
-        addGorn() {
+        addNode() {
 
             this.redrawEverything();
         },
-        deleteGorn(indexToDelete) {
+        deleteNode(indexToDelete) {
 
             this.redrawEverything();
         },
         movePlayer() {
-            if (buffer[0] == "→") {
-                //if all the way right dont move
-                //else move +100 px
-            } else if (buffer[0] == "←") {
-                //if all the way left dont move
-                //else move -100 px
-            }
+
         },
+        gornPlacement() {
+            const gImg = new Image();
+            gImg.src = "img/gorn.png";
+            gImg.onload = () => {
+                this.ctx.drawImage(gImg, 1, 1, 75, 75);
+            };
+        }
     },
 
     computed: {
