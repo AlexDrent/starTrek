@@ -67,32 +67,32 @@ let myApp = Vue.createApp({
 
             this.redrawEverything();
         },
-        movePlayer(position) {
+        movePlayer(xCoord) {
             if (buffer[0] == "→") {
-                if (position > 630) {
-                    return position;
+                if (xCoord > 630) {
+                    this.redrawEverything();
                 } else {
-                    position += 70;
-                    return position;
+                    xCoord += 70;
+                    this.redrawEverything();
                 }
             } else if (buffer[0] == "←") {
-                if (position < 0) {
-                    return position;
+                if (xCoord < 0) {
+                    this.redrawEverything();
                 } else {
-                    position -= 70;
-                    return position;
+                    xCoord -= 70;
+                    this.redrawEverything();
                 }
             }
         },
         gornPlacement() {
-            for (i = 0; i <= 2; i++) {
+            //for (i = 0; i <= 2; i++) {
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
                     const startHere = randomColumn();
                     this.ctx.drawImage(gImg, startHere, 0, 67, 67);
                 }
-            };
+            //};
         },
         hypoSpray() {
             const hImg = new Image();
