@@ -84,18 +84,20 @@ let myApp = Vue.createApp({
         },
         gornPlacement() {
             //no more than 3 gorns at once 
-            const gImg = new Image();
-            gImg.src = "img/gorn.png";
-            gImg.onload = () => {
-                const startHere = randomPosition();
-                this.ctx.drawImage(gImg, startHere, 0, 67, 67);
+            for(i =0; i <= 2; i++){
+                const gImg = new Image();
+                gImg.src = "img/gorn.png";
+                gImg.onload = () => {
+                    const startHere = randomPosition();
+                    this.ctx.drawImage(gImg, startHere, 0, 67, 67);
+                }
             };
         },
         hypoSpray(){
             const hImg = new Image();
             hImg.src = "img/hypospray.png";
             hImg.onload = () => {
-            this.ctx.drawImage(hImg, startHere, 0, 75, 75);
+            this.ctx.drawImage(hImg, startHere, 0, 67, 67);
             }
         },
         playerPlacement(){
@@ -103,7 +105,7 @@ let myApp = Vue.createApp({
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
                 //const moved = movePlayer();
-                this.ctx.drawImage(pImg, 320, 420, 67, 67);
+                this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
         }
     },
