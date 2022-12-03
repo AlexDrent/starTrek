@@ -85,23 +85,23 @@ let myApp = Vue.createApp({
             }
         },
         gornPlacement() {
-            for (i = 0; i <= 2; i++) {
+            //for (i = 0; i <= 2; i++) {
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
                     const startHere = randomColumn();
                     this.ctx.drawImage(gImg, startHere, 0, 67, 67);
                 }
-            };
+            //};
         },
         hypoSpray() {
             const hImg = new Image();
             hImg.src = "img/hypospray.png";
             var tile = 5;
             hImg.onload = () => {
-                for (let i = 0; i < this.lives; i++){
-                this.ctx.drawImage(hImg, tile, 5);
-                tile += 50;
+                for (let i = 0; i < this.lives; i++) {
+                    this.ctx.drawImage(hImg, tile, 5);
+                    tile += 50;
                 }
             }
         },
@@ -112,11 +112,11 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
         },
-        gornAttack(){
+        gornAttack() {
             //if caught
-                //remove image
+            //remove image
             //else missed
-                //removeLife called here
+            //removeLife called here
         },
 
         reset() {
@@ -125,7 +125,7 @@ let myApp = Vue.createApp({
         addToScore() {
             this.currentScore += 1701;
         },
-        removeLife(){
+        removeLife() {
             this.lives -= 0;
         }
     },
