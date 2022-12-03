@@ -73,13 +73,21 @@ let myApp = Vue.createApp({
 
             this.redrawEverything();
         },
-        movePlayer() {
+        movePlayer(position) {
             if (buffer[0] == "→") {
-                //if all the way right dont move
-                //else move +70 px
+                if(position > 630){
+                    return position;
+                }else{
+                    position += 70;
+                    return position;
+                }
             } else if (buffer[0] == "←") {
-                //if all the way left dont move
-                //else move -70 px
+                if(position < 0) {
+                    return position;
+                }else{
+                    position -= 70;
+                    return position;
+                }
             }
         },
         gornPlacement() {
@@ -103,8 +111,7 @@ let myApp = Vue.createApp({
             const pImg = new Image();
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
-                //const moved = movePlayer();
-                this.ctx.drawImage(pImg, 280, 410, 67, 67);
+                this.ctx.drawImage(pImg, 280, 420, 67, 67);
             }
         }
     },
