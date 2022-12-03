@@ -102,8 +102,8 @@ let myApp = Vue.createApp({
             const pImg = new Image();
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
-                const moved = movePlayer();
-                this.ctx.drawImage(pImg, 320, moved, 67, 67);
+                //const moved = movePlayer();
+                this.ctx.drawImage(pImg, 320, 420, 67, 67);
             }
         }
     },
