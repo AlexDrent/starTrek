@@ -44,6 +44,7 @@ let myApp = Vue.createApp({
             ctx: null,
             nodes: [],
             currentScore: 0,
+            lives: 3
         };
     },
 
@@ -54,7 +55,6 @@ let myApp = Vue.createApp({
             img.onload = () => {
                 this.ctx.drawImage(img, 0, 0);
             };
-
         },
         redrawEverything() {
             this.addBgImage();
@@ -86,12 +86,19 @@ let myApp = Vue.createApp({
             gImg.src = "img/gorn.png";
             gImg.onload = () => {
                 const startHere = randomPosition();
-                this.ctx.drawImage(gImg, startHere, 0, 75, 75);
+                this.ctx.drawImage(gImg, 0, 0);
             };
+        },
+        hypoSpray(){
+            const hImg = new Image();
+            hImg.src = "img/hypospray.png";
+            hImg.onload = () => {
+            this.ctx.drawImage(hImg, startHere, 0, 75, 75);
+            }
         },
         playPlacement(){
             const pImg = new Image();
-            pImg.src = "img/"
+            pImg.src = "img/";
         }
     },
 

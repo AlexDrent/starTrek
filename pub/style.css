@@ -13,6 +13,7 @@
 .canvaClass{
     text-align: center;
     padding: 5%;
+    padding-top: 0%;
 }
 #trekkoning{
     font-size: 50px;
