@@ -61,6 +61,7 @@ let myApp = Vue.createApp({
             this.gornAttack();
             this.gornPlacement();
             this.playerPlacement();
+            this.hypoSpray();
         },
         deleteGorn(indexToDelete) {
 
@@ -115,7 +116,7 @@ let myApp = Vue.createApp({
             //if caught
                 //remove image
             //else missed
-                //hypoSpray called here and displayed
+                //removeLife called here
         },
 
         reset() {
@@ -123,6 +124,9 @@ let myApp = Vue.createApp({
         },
         addToScore() {
             this.currentScore += 1701;
+        },
+        removeLife(){
+            this.lives -= 0;
         }
     },
 
