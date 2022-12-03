@@ -1,5 +1,5 @@
 function randomPosition() {
-    let positions = [100,200,300,400,500,600,700];
+    let positions = [100,200,300,400,500,600];
     let currentPos = positions[Math.floor(Math.random()*positions.length)];
     return currentPos;
 }
@@ -68,10 +68,6 @@ let myApp = Vue.createApp({
                 // }
 
         },
-        addGorn() {
-
-            this.redrawEverything();
-        },
         deleteGorn(indexToDelete) {
 
             this.redrawEverything();
@@ -93,6 +89,10 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(gImg, startHere, 0, 75, 75);
             };
         },
+        playPlacement(){
+            const pImg = new Image();
+            pImg.src = "img/"
+        }
     },
 
     computed: {
