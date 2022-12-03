@@ -1,7 +1,7 @@
-function randomPosition() {
-    let positions = [0, 70, 140, 210, 280, 350, 420, 490, 560, 630];
-    let currentPos = positions[Math.floor(Math.random() * positions.length)];
-    return currentPos;
+function randomColumn() {
+    let columns = [0, 70, 140, 210, 280, 350, 420, 490, 560, 630];
+    let currentCol = columns[Math.floor(Math.random() * columns.length)];
+    return currentCol;
 }
 //-------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -89,7 +89,7 @@ let myApp = Vue.createApp({
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
-                    const startHere = randomPosition();
+                    const startHere = randomColumn();
                     this.ctx.drawImage(gImg, startHere, 0, 67, 67);
                 }
             };
