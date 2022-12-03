@@ -70,31 +70,35 @@ let myApp = Vue.createApp({
 
             this.redrawEverything();
         },
-        movePlayer(xCoord) {
+        movePlayer(position) {
             if (buffer[0] == "→") {
-                if (xCoord > 630) {
+                if (position > 630) {
                     this.redrawEverything();
                 } else {
-                    xCoord += 70;
+                    position += 70;
                     this.redrawEverything();
                 }
             } else if (buffer[0] == "←") {
-                if (xCoord < 0) {
+                if (position < 0) {
                     this.redrawEverything();
                 } else {
-                    xCoord -= 70;
+                    position -= 70;
                     this.redrawEverything();
                 }
             }
         },
         gornPlacement() {
-            //for (i = 0; i <= 2; i++) {
+            for (i = 0; i <= 2; i++) {
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
                     this.ctx.drawImage(gImg, this.startHere, this.gornYPos, 67, 67);
                 }
-            //};
+            };
+        },
+        gornReset(){
+            this.startHere = randomColumn();
+            this.gornYPos = 0;
         },
         gornReset(){
             this.startHere = randomColumn();
@@ -105,9 +109,9 @@ let myApp = Vue.createApp({
             hImg.src = "img/hypospray.png";
             var tile = 5;
             hImg.onload = () => {
-                for (let i = 0; i < this.lives; i++) {
-                    this.ctx.drawImage(hImg, tile, 5);
-                    tile += 50;
+                for (let i = 0; i < this.lives; i++){
+                this.ctx.drawImage(hImg, tile, 5);
+                tile += 50;
                 }
             }
         },
@@ -118,11 +122,11 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
         },
-        gornAttack() {
+        gornAttack(){
             //if caught
-            //remove image
+                //remove image
             //else missed
-            //removeLife called here
+                //removeLife called here
         },
 
         reset() {
@@ -131,7 +135,7 @@ let myApp = Vue.createApp({
         addToScore() {
             this.currentScore += 1701;
         },
-        removeLife() {
+        removeLife(){
             this.lives -= 0;
         },
         gameTime() {
@@ -140,7 +144,7 @@ let myApp = Vue.createApp({
     },
 
     computed: {
-        message: function() {
+        message: function () {
             if (this.lives == 0) {
                 return "Game Over! Final Score: " + this.currentScore + ". Submit score below?";
             } else {
