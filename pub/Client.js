@@ -1,7 +1,7 @@
-function randomColor() {
-    let ret = "#";
-    for (let i = 0; i < 6; i++) ret += Math.floor(Math.random() * 16).toString(16);
-    return ret;
+function randomPosition() {
+    let positions = [50, 100, 150, 200, 250, 300, 350, 400, 450];
+    let currentPos = positions[Math.floor(Math.random() * positions.length)];
+    return currentPos;
 }
 //-------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -55,7 +55,8 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(img, 0, 0);
             };
 
-<<<<<<< HEAD
+            <<
+            << << < HEAD
             //Draw the line
             this.ctx.beginPath(); //clears out any previous draw paths.
             this.ctx.lineWidth = 2;
@@ -66,12 +67,15 @@ let myApp = Vue.createApp({
         redrawEverything() {
             this.addBgImage();
 
-=======
+            ===
+            === =
         },
         redrawEverything() {
             this.addBgImage();
-            
->>>>>>> 216af7f48881926e5e4fe4927e0195d1f4817453
+            this.gornPlacement();
+
+            >>>
+            >>> > 216 af7f48881926e5e4fe4927e0195d1f4817453
             //For the lines! - KEEP for redraw reference
             // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
             //     let n = this.nodes[i];
@@ -97,24 +101,21 @@ let myApp = Vue.createApp({
                 //else move -100 px
             }
         },
-<<<<<<< HEAD
         gornPlacement() {
             const gImg = new Image();
             gImg.src = "img/gorn.png";
             gImg.onload = () => {
-                this.ctx.drawImage(gImg, 1, 1, 75, 75);
+                const startHere = randomPosition();
+                this.ctx.drawImage(gImg, startHere, 0, 75, 75);
             };
         },
-        movePlayer() {
-
-=======
     },
 
     computed: {
-        addToScore(){
+        addToScore() {
             currentScore += 1701;
-            return currentScore;
->>>>>>> 216af7f48881926e5e4fe4927e0195d1f4817453
+            return currentScore; >>>
+            >>> > 216 af7f48881926e5e4fe4927e0195d1f4817453
         }
     },
 
