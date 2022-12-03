@@ -1,6 +1,6 @@
 function randomPosition() {
     let positions = [0, 70, 140, 210, 280, 350, 420, 490, 560, 630];
-    let currentPos = positions[Math.floor(Math.random()*positions.length)];
+    let currentPos = positions[Math.floor(Math.random() * positions.length)];
     return currentPos;
 }
 //-------------------------------------------------------------------
@@ -58,9 +58,10 @@ let myApp = Vue.createApp({
         },
         redrawEverything() {
             this.addBgImage();
-            this.hypoSpray();
             this.gornPlacement();
             this.playerPlacement();
+            this.hypoSpray();
+            this.drawScore();
         },
         deleteGorn(indexToDelete) {
 
@@ -76,7 +77,7 @@ let myApp = Vue.createApp({
             }
         },
         gornPlacement() {
-            for(i =0; i <= 2; i++){
+            for (i = 0; i <= 2; i++) {
                 const gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
@@ -85,18 +86,18 @@ let myApp = Vue.createApp({
                 }
             };
         },
-        hypoSpray(){
+        hypoSpray() {
             const hImg = new Image();
             hImg.src = "img/hypospray.png";
             var tile = 5;
             hImg.onload = () => {
-            for (let i = 0; i < this.lives; i++){
-            this.ctx.drawImage(hImg, tile, 5);
-            tile += 50;
-            }
+                for (let i = 0; i < this.lives; i++) {
+                    this.ctx.drawImage(hImg, tile, 5);
+                    tile += 50;
+                }
             }
         },
-        playerPlacement(){
+        playerPlacement() {
             const pImg = new Image();
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
@@ -104,9 +105,9 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
         },
-        reset(){
+        reset() {
             this.lives = 3;
-        }
+        },
     },
 
     computed: {
