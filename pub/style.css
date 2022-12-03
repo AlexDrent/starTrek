@@ -3,4 +3,16 @@
 }
 .center{
     text-align: center;
+    color:#ffd119;
+}
+.paramount{
+    text-align: center;
+    color:#962c1a;
+}
+.canvaClass{
+    text-align: center;
+    padding: 5%;
+}
+body{
+    background-color: #040533;
 }
