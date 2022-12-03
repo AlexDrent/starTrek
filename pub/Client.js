@@ -49,7 +49,7 @@ let myApp = Vue.createApp({
             ctx: null,
             nodes: [],
             currentScore: 0,
-            lives: 3
+            lives: 3,
         };
     },
 
@@ -66,7 +66,6 @@ let myApp = Vue.createApp({
             this.gornAttack();
             this.gornPlacement();
             this.playerPlacement();
-            this.drawScore();
         },
         deleteGorn(indexToDelete) {
 
@@ -74,16 +73,16 @@ let myApp = Vue.createApp({
         },
         movePlayer(position) {
             if (buffer[0] == "→") {
-                if(position > 630){
+                if (position > 630) {
                     return position;
-                }else{
+                } else {
                     position += 70;
                     return position;
                 }
             } else if (buffer[0] == "←") {
-                if(position < 0) {
+                if (position < 0) {
                     return position;
-                }else{
+                } else {
                     position -= 70;
                     return position;
                 }
@@ -127,12 +126,18 @@ let myApp = Vue.createApp({
         reset() {
             this.lives = 3;
         },
+        addToScore() {
+            this.currentScore += 1701;
+        }
     },
 
     computed: {
-        addToScore() {
-            currentScore += 1701;
-            return currentScore;
+        message: function () {
+            if (this.lives == 0) {
+                return "Game Over! Final Score: " + this.currentScore + ". Submit score below?";
+            } else {
+                return "Current Score: " + this.currentScore;
+            }
         }
     },
 
