@@ -99,9 +99,9 @@ let myApp = Vue.createApp({
             hImg.src = "img/hypospray.png";
             var tile = 5;
             hImg.onload = () => {
-                for (let i = 0; i < this.lives; i++){
-                this.ctx.drawImage(hImg, tile, 5);
-                tile += 50;
+                for (let i = 0; i < this.lives; i++) {
+                    this.ctx.drawImage(hImg, tile, 5);
+                    tile += 50;
                 }
             }
         },
@@ -112,11 +112,11 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
         },
-        gornAttack(){
+        gornAttack() {
             //if caught
-                //remove image
+            //remove image
             //else missed
-                //removeLife called here
+            //removeLife called here
         },
 
         reset() {
@@ -125,13 +125,19 @@ let myApp = Vue.createApp({
         addToScore() {
             this.currentScore += 1701;
         },
-        removeLife(){
+        removeLife() {
             this.lives -= 0;
+        },
+        gameTime() {
+            setInterval(function() {
+                this.redrawEverything;
+                console.log("refresh");
+            }, 1000)
         }
     },
 
     computed: {
-        message: function () {
+        message: function() {
             if (this.lives == 0) {
                 return "Game Over! Final Score: " + this.currentScore + ". Submit score below?";
             } else {
@@ -143,5 +149,6 @@ let myApp = Vue.createApp({
     mounted() {
         this.ctx = this.$refs.splineDisplay.getContext("2d"); //gets the graphics context for drawing
         this.redrawEverything();
+        this.gameTime();
     }
 }).mount("#app");
