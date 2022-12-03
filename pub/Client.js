@@ -1,6 +1,5 @@
 function randomPosition() {
-    //700x480
-    let positions = [0,70,140,210,280,350,420,490,560,630];
+    let positions = [100,200,300,400,500,600];
     let currentPos = positions[Math.floor(Math.random()*positions.length)];
     return currentPos;
 }
@@ -60,14 +59,13 @@ let myApp = Vue.createApp({
         redrawEverything() {
             this.addBgImage();
             this.gornPlacement();
-            this.playerPlacement();
             
             //For the lines! - KEEP for redraw reference
-                // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
-                //     let n = this.nodes[i];
-                //     let m = this.nodes[i + 1];
-                //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
-                // }
+            // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
+            //     let n = this.nodes[i];
+            //     let m = this.nodes[i + 1];
+            //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
+            // }
 
         },
         deleteGorn(indexToDelete) {
@@ -91,7 +89,7 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(gImg, startHere, 0, 67, 67);
             };
         },
-        playerPlacement(){
+        playPlacement(){
             const pImg = new Image();
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
@@ -101,7 +99,7 @@ let myApp = Vue.createApp({
     },
 
     computed: {
-        addToScore(){
+        addToScore() {
             currentScore += 1701;
             return currentScore;
         }
