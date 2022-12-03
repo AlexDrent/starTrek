@@ -8,10 +8,16 @@
 .paramount{
     text-align: center;
     color:#962c1a;
+    font-family: "Comic Sans", sans-serif;
 }
 .canvaClass{
     text-align: center;
     padding: 5%;
+}
+#trekkoning{
+    font-size: 50px;
+    color: lightyellow;
+    font-family: 'Courier New', Courier, monospace;
 }
 body{
     background-color: #040533;
