@@ -44,7 +44,6 @@ let myApp = Vue.createApp({
             ctx: null,
             nodes: [],
             currentScore: 0,
-            highScore: null,
         };
     },
 
@@ -91,13 +90,6 @@ let myApp = Vue.createApp({
         addToScore(){
             currentScore += 1701;
             return currentScore;
-        },
-        highScore(){
-            if (this.currentScore > this.highScore){
-                return this.currentScore;
-            }
-            return this.highScore;
-            }
         }
     },
 
