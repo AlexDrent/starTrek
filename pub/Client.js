@@ -89,8 +89,8 @@ let myApp = Vue.createApp({
             const gImg = new Image();
             gImg.src = "img/gorn.png";
             gImg.onload = () => {
-                const startHere = randomPosition;
-                this.ctx.drawImage(gImg, 0, startHere, 75, 75);
+                const startHere = randomPosition();
+                this.ctx.drawImage(gImg, startHere, 0, 75, 75);
             };
         },
     },
