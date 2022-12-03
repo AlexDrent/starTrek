@@ -1,3 +1,5 @@
+const { buffer } = require("stream/consumers");
+
 function randomColor() {
     let ret = "#";
     for (let i = 0; i < 6; i++) ret += Math.floor(Math.random() * 16).toString(16);
@@ -29,7 +31,8 @@ function keyMapper() {
         lastKeyTime = currentTime;
 
 
-        console.log(buffer)
+        console.log(buffer);
+        return buffer[0];
     });
 }
 //---------------------------------------------------------------------------------
@@ -81,7 +84,13 @@ let myApp = Vue.createApp({
             this.redrawEverything();
         },
         movePlayer() {
-
+            if (buffer[0] == "→") {
+                //if all the way right dont move
+                //else move +100 px
+            } else if (buffer[0] == "←") {
+                //if all the way left dont move
+                //else move -100 px
+            }
         },
     },
 
