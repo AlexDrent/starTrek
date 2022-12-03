@@ -18,7 +18,6 @@ function keyMapper() {
         const charList = 'abcdefghijklmnopqrstuvwxyz0123456789←→↓↑';
         const key = event.key.toLowerCase();
 
-
         const currentTime = Date.now();
 
         if (currentTime - lastKeyTime > 1000) {
@@ -29,8 +28,7 @@ function keyMapper() {
         lastKeyTime = currentTime;
 
 
-        console.log(buffer);
-        return buffer[0];
+        console.log(buffer)
     });
 }
 //---------------------------------------------------------------------------------
@@ -47,12 +45,12 @@ let myApp = Vue.createApp({
     },
 
     methods: {
-        drawLine(x1, y1, x2, y2, color1, color2) {
-            //set up the line's gradient
-            let g = this.ctx.createLinearGradient(x1, y1, x2, y2);
-            g.addColorStop(0, color1);
-            g.addColorStop(1, color2);
-            this.ctx.strokeStyle = g;
+        addBgImage() {
+            const img = new Image();
+            img.src = "img/back.png";
+            img.onload = () => {
+                this.ctx.drawImage(img, 0, 0);
+            };
 
             //Draw the line
             this.ctx.beginPath(); //clears out any previous draw paths.
@@ -62,34 +60,37 @@ let myApp = Vue.createApp({
             this.ctx.stroke(); //put ink down
         },
         redrawEverything() {
-            this.ctx.fillStyle = this.backColor;
-            this.ctx.fillRect(0, 0, 400, 400);
-            //For the lines!
-            for (let i = 0; i < this.nodes.length - 1; i++) { // -1 here because we look ahead to draw to the next node
-                for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
-                    let n = this.nodes[i];
-                    let m = this.nodes[i + 1];
-                    this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
-                }
-            }
+            this.addBgImage();
+
+            //For the lines! - KEEP for redraw reference
+            // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
+            //     let n = this.nodes[i];
+            //     let m = this.nodes[i + 1];
+            //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
+            // }
+
         },
-        addNode() {
+        addGorn() {
 
             this.redrawEverything();
         },
-        deleteNode(indexToDelete) {
+        deleteGorn(indexToDelete) {
 
             this.redrawEverything();
         },
         movePlayer() {
-            if (buffer[0] == "→") {
-                //if all the way right dont move
-                //else move +100 px
-            } else if (buffer[0] == "←") {
-                //if all the way left dont move
-                //else move -100 px
-            }
+
         },
+        gornPlacement() {
+            const gImg = new Image();
+            gImg.src = "img/gorn.png";
+            gImg.onload = () => {
+                this.ctx.drawImage(gImg, 1, 1, 75, 75);
+            };
+        },
+        movePlayer() {
+
+        }
     },
 
     computed: {},
