@@ -92,7 +92,11 @@ let myApp = Vue.createApp({
         },
     },
 
-    computed: {},
+    computed: {
+        addToScore(){
+
+        }
+    },
 
     mounted() {
         this.ctx = this.$refs.splineDisplay.getContext("2d"); //gets the graphics context for drawing
