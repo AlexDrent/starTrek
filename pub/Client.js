@@ -58,16 +58,9 @@ let myApp = Vue.createApp({
         },
         redrawEverything() {
             this.addBgImage();
+            this.hypoSpray();
             this.gornPlacement();
             this.playerPlacement();
-            
-            //For the lines! - KEEP for redraw reference
-            // for (let j = 0; j < this.linesPerNode; j++) { //draws "this.linesPerNode" lines to the next node
-            //     let n = this.nodes[i];
-            //     let m = this.nodes[i + 1];
-            //     this.drawLine(n.x + n.dx * j, n.y + n.dy * j, m.x + m.dx * j, m.y + m.dy * j, n.color, m.color);
-            // }
-
         },
         deleteGorn(indexToDelete) {
 
@@ -103,8 +96,12 @@ let myApp = Vue.createApp({
         hypoSpray(){
             const hImg = new Image();
             hImg.src = "img/hypospray.png";
+            var tile = 5;
             hImg.onload = () => {
-            this.ctx.drawImage(hImg, startHere, 0, 67, 67);
+            for (let i = 0; i < this.lives; i++){
+            this.ctx.drawImage(hImg, tile, 5);
+            tile += 50;
+            }
             }
         },
         playerPlacement(){
@@ -113,6 +110,9 @@ let myApp = Vue.createApp({
             pImg.onload = () => {
                 this.ctx.drawImage(pImg, 280, 420, 67, 67);
             }
+        },
+        reset(){
+            this.lives = 3;
         }
     },
 
