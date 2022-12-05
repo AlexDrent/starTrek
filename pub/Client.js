@@ -72,22 +72,22 @@ let myApp = Vue.createApp({
         },
         deleteGorn(indexToDelete) {
 
-            this.redrawEverything();
+            //this.redrawEverything();
         }, //→"
         movePlayer(position) {
             if (buffer[0] == "arrowright") {
                 if (position > 630) {
-                    this.redrawEverything();
+                    //this.redrawEverything();
                 } else {
                     position += 70;
-                    this.redrawEverything();
+                    //this.redrawEverything();
                 }
             } else if (buffer[0] == "←") {
                 if (position < 0) {
-                    this.redrawEverything();
+                    //this.redrawEverything();
                 } else {
                     position -= 70;
-                    this.redrawEverything();
+                    //this.redrawEverything();
                 }
             }
         },
@@ -145,7 +145,7 @@ let myApp = Vue.createApp({
             this.currentScore += 1701;
         },
         removeLife() {
-            this.lives -= 0;
+            this.lives -= 1;
         },
         gameTime() {
             setInterval(this.redrawEverything, 1000);
