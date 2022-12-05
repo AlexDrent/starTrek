@@ -4,37 +4,37 @@ function randomColumn() {
     return currentCol;
 }
 //-------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-    'use strict';
+// document.addEventListener('DOMContentLoaded', () => {
+//     'use strict';
 
-    keyMapper();
-});
+//     keyMapper();
+// });
 
-let buffer = [];
+// let buffer = [];
 
-function keyMapper() {
-    //buffer = [];
-    let lastKeyTime = Date.now();
+// function keyMapper() {
+//     //buffer = [];
+//     let lastKeyTime = Date.now();
 
-    document.addEventListener('keydown', event => {
-        const charList = 'abcdefghijklmnopqrstuvwxyz0123456789←→↓↑';
-        const key = event.key.toLowerCase();
-
-
-        const currentTime = Date.now();
-
-        if (currentTime - lastKeyTime > 1000) {
-            buffer = [];
-        }
-
-        buffer.push(key);
-        lastKeyTime = currentTime;
+//     document.addEventListener('keydown', event => {
+//         const charList = 'abcdefghijklmnopqrstuvwxyz0123456789←→↓↑';
+//         const key = event.key.toLowerCase();
 
 
-        console.log(buffer);
-        return buffer[0];
-    });
-}
+//         const currentTime = Date.now();
+
+//         if (currentTime - lastKeyTime > 1000) {
+//             buffer = [];
+//         }
+
+//         buffer.push(key);
+//         lastKeyTime = currentTime;
+
+
+//         console.log(buffer);
+//         return buffer[0];
+//     });
+// }
 //---------------------------------------------------------------------------------
 
 let myApp = Vue.createApp({
@@ -50,6 +50,8 @@ let myApp = Vue.createApp({
             gornYPos: 10,
             starthere: 0,
             gImg: null,
+            position: 210,
+            buffer: [],
         };
     },
 
@@ -72,24 +74,25 @@ let myApp = Vue.createApp({
         },
         deleteGorn(indexToDelete) {
 
-            //this.redrawEverything();
-        }, //→"
-        movePlayer(position) {
-            if (buffer[0] == "arrowright") {
-                if (position > 630) {
-                    //this.redrawEverything();
+            this.redrawEverything();
+        }, //"→"
+        movePlayer() {
+            if (this.buffer[0] == "arrowright") {
+                if (this.position > 630) {
+                    this.redrawEverything();
                 } else {
-                    position += 70;
-                    //this.redrawEverything();
+                    this.position += 70;
+                    this.redrawEverything();
                 }
-            } else if (buffer[0] == "←") {
-                if (position < 0) {
-                    //this.redrawEverything();
+            } else if (this.buffer[0] == "←") {
+                if (this.position < 0) {
+                    this.redrawEverything();
                 } else {
-                    position -= 70;
-                    //this.redrawEverything();
+                    this.position -= 70;
+                    this.redrawEverything();
                 }
             }
+            console.log(this.position);
         },
         gornPlacement() {
             for (i = 0; i <= 2; i++) {
@@ -119,7 +122,7 @@ let myApp = Vue.createApp({
             const pImg = new Image();
             pImg.src = "img/kirk.png";
             pImg.onload = () => {
-                this.ctx.drawImage(pImg, 280, 410, 67, 67);
+                this.ctx.drawImage(pImg, this.position, 410, 67, 67);
             }
         },
         gornAttack() {
@@ -174,5 +177,30 @@ let myApp = Vue.createApp({
         this.gameTime();
         this.gornReset();
         this.movePlayer();
+        document.addEventListener('keydown', event => {
+            const charList = 'abcdefghijklmnopqrstuvwxyz0123456789←→↓↑';
+            let lastKeyTime = null;
+            const key = event.key.toLowerCase();
+
+
+            const currentTime = Date.now();
+
+            if (currentTime - lastKeyTime > 1000) {
+                this.buffer = [];
+            }
+
+            this.buffer.push(key);
+            lastKeyTime = currentTime;
+
+            if (this.buffer[0] == "arrowright") {
+                this.position += 70;
+                this.redrawEverything();
+            } else if (this.buffer[0] == "arrowleft") {
+                this.position -= 70;
+                this.redrawEverything();
+            }
+            console.log(this.buffer);
+            return this.buffer[0];
+        });
     }
 }).mount("#app");
