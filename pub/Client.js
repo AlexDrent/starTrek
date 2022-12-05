@@ -124,11 +124,12 @@ let myApp = Vue.createApp({
         },
         gornAttack() {
             //if caught
-            //remove image
+            //if gorn is on bottom row and gorn and kirk are in the same column
             if (this.gornYPos == 410 && this.startHere == this.position) {
                 //caught
                 this.addToScore();
                 this.gornReset();
+                //else if gorn is below the bottom row and they are not in the same column
             } else if (this.gornYPos > 410 && this.startHere != this.position) {
                 //missed
                 this.removeLife();
@@ -150,6 +151,10 @@ let myApp = Vue.createApp({
         gameTime() {
             setInterval(this.redrawEverything, 1000);
             console.log("refresh 1");
+        },
+        stopGame() {
+            clearInterval();
+            this.addBgImage();
         }
     },
 
