@@ -162,6 +162,7 @@ let myApp = Vue.createApp({
         stopGame() {
             clearInterval(gameYeet);
             this.addBgImage();
+            document.getElementById("scoreList").style.visibility = "visible";
         }
     },
 
