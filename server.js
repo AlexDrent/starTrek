@@ -6,8 +6,7 @@ server.use(bodyParser.urlencoded({extended: true}));
 let highScores = {};
 
 server.post("/addNewScore", function(req,res){
-    if(!highScores[req.body.user]) highScores[req.body.user] = 0;
-    if(!highScores[req.body.score])highScores[req.body.score] = req.body.score;
+    if(!highScores[req.body.user]) highScores[req.body.user] = req.body.score;
     res.write("Your score of " + req.body.score + " has been recorded " + req.body.user + "!");
     
     res.end();
@@ -17,7 +16,7 @@ server.get("/topThreeScores", function (req, res) {
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "no-cache");
     for(user in highScores){
-        res.write(user + " has " + highScores[req.query.user] + " points \n");
+        res.write(user + " has " + highScores[user] + " points \n");
     }
     res.end();
 });
