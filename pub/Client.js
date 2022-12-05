@@ -143,7 +143,7 @@ let myApp = Vue.createApp({
             //else missed
             //removeLife called here
         },
-
+        //reset needs work
         reset() {
             this.lives = 3;
         },
