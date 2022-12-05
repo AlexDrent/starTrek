@@ -52,6 +52,7 @@ let myApp = Vue.createApp({
             gImg: null,
             position: 210,
             buffer: [],
+            gameYeet: null,
         };
     },
 
@@ -150,13 +151,16 @@ let myApp = Vue.createApp({
         },
         removeLife() {
             this.lives -= 1;
+            if (this.lives <= 0){
+                this.stopGame();
+            }
         },
         gameTime() {
-            setInterval(this.redrawEverything, 1000);
+            gameYeet = setInterval(this.redrawEverything, 1000);
             console.log("refresh 1");
         },
         stopGame() {
-            clearInterval();
+            clearInterval(gameYeet);
             this.addBgImage();
         }
     },
@@ -192,6 +196,7 @@ let myApp = Vue.createApp({
             this.buffer.push(key);
             lastKeyTime = currentTime;
 
+            if (this.lives != 0){
             if (this.buffer[0] == "arrowright") {
                 this.position += 70;
                 this.redrawEverything();
@@ -199,6 +204,7 @@ let myApp = Vue.createApp({
                 this.position -= 70;
                 this.redrawEverything();
             }
+        }
             console.log(this.buffer);
             return this.buffer[0];
         });
