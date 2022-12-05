@@ -10,8 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     keyMapper();
 });
 
+let buffer = [];
+
 function keyMapper() {
-    let buffer = [];
+    //buffer = [];
     let lastKeyTime = Date.now();
 
     document.addEventListener('keydown', event => {
@@ -45,7 +47,7 @@ let myApp = Vue.createApp({
             nodes: [],
             currentScore: 0,
             lives: 3,
-            gornYPos: 0,
+            gornYPos: 10,
             starthere: 0,
             gImg: null,
         };
@@ -71,9 +73,9 @@ let myApp = Vue.createApp({
         deleteGorn(indexToDelete) {
 
             this.redrawEverything();
-        },
+        }, //→"
         movePlayer(position) {
-            if (buffer[0] == "→") {
+            if (buffer[0] == "arrowright") {
                 if (position > 630) {
                     this.redrawEverything();
                 } else {
@@ -100,11 +102,7 @@ let myApp = Vue.createApp({
         },
         gornReset() {
             this.startHere = randomColumn();
-            this.gornYPos = 0;
-        },
-        gornReset() {
-            this.startHere = randomColumn();
-            this.gornYPos = 0;
+            this.gornYPos = 10;
         },
         hypoSpray() {
             const hImg = new Image();
@@ -127,9 +125,15 @@ let myApp = Vue.createApp({
         gornAttack() {
             //if caught
             //remove image
-            if (gImg) {
-
-            };
+            if (this.gornYPos == 410 && this.startHere == this.position) {
+                //caught
+                this.addToScore();
+                this.gornReset();
+            } else if (this.gornYPos > 410 && this.startHere != this.position) {
+                //missed
+                this.removeLife();
+                this.gornReset();
+            }
             //else missed
             //removeLife called here
         },
@@ -164,5 +168,6 @@ let myApp = Vue.createApp({
         this.redrawEverything();
         this.gameTime();
         this.gornReset();
+        this.movePlayer();
     }
 }).mount("#app");
