@@ -12,7 +12,7 @@ server.post("/addNewScore", function(req,res){
     res.end();
 });
 
-server.get("/topThreeScores", function (req, res) {
+server.get("/topHighScores", function (req, res) {
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "no-cache");
     for(user in highScores){

@@ -53,6 +53,7 @@ let myApp = Vue.createApp({
             position: 210,
             buffer: [],
             gameYeet: null,
+            feedback: "",
         };
     },
 
@@ -163,6 +164,39 @@ let myApp = Vue.createApp({
             clearInterval(gameYeet);
             this.addBgImage();
             document.getElementById("scoreList").style.visibility = "visible";
+        },
+        fetchScoreList(){
+            fetch("/topHighScores").then(
+                (result) => {
+                    if(!result.ok) throw new Error("status: " + result.status);
+                    return result.text();
+                }
+            ).then(
+                (data) => {
+                    this.feedback = data;
+                },
+                (err) => {
+                    this.feedback = "Error: " + err.message;
+                }
+            );
+        },
+        fetchAddingScore() {
+            let params = new URLSearchParams();
+            params.append("user", this.user);
+            params.append("score", this.score);
+            fetch("/addNewScore", {method: 'POST', body: params }).then(
+                (result) => {
+                    if(!result.ok) throw new Error("status: " + result.status);
+                    return result.text();
+                }
+            ).then(
+                (data) => {
+                    this.feedback = data;
+                },
+                (err) => {
+                    this.feedback = "Error: " + err.message;
+                }
+            );
         }
     },
 

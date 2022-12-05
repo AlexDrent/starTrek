@@ -27,18 +27,18 @@
 
         <!-- Server Score List -->
         <div id="scoreList" class="center">
-            <form action="/addNewScore" method="post">
+            <pre>{{feedback}}</pre>
+            <div>
                 <label for="person">Enter 3 letter username: </label>
-                <input type="text" maxlength="3" id="user" name="user">
-                <label for="scores">Enter your score: </label>
-                <input type="text" id="score" name="score">
-                <input type="submit" value="Submit">
-            </form>
+                <input type="text" maxlength="3" v-model="user">
+                <label for="points">Enter your score: </label>
+                <input type="text" v-model="score">
+                <button @click="fetchAddingScore">Submit new score</button>
+            </div>
             <br>
-            <form action="/topThreeScores" method="get">
-                <label for="fScores">Get list of top high scores: </label>
-                <input type="submit" value="Get List">
-            </form>
+            <div>
+                <button @click="fetchScoreList">Get List of High Scores</button>
+            </div>
         </div>
 
         <br>
