@@ -47,6 +47,7 @@ let myApp = Vue.createApp({
             lives: 3,
             gornYPos: 0,
             starthere: 0,
+            gImg: null,
         };
     },
 
@@ -90,7 +91,7 @@ let myApp = Vue.createApp({
         },
         gornPlacement() {
             for (i = 0; i <= 2; i++) {
-                const gImg = new Image();
+                gImg = new Image();
                 gImg.src = "img/gorn.png";
                 gImg.onload = () => {
                     this.ctx.drawImage(gImg, this.startHere, this.gornYPos, 67, 67);
@@ -126,6 +127,9 @@ let myApp = Vue.createApp({
         gornAttack() {
             //if caught
             //remove image
+            if (gImg) {
+
+            };
             //else missed
             //removeLife called here
         },
