@@ -65,6 +65,7 @@ let myApp = Vue.createApp({
             this.playerPlacement();
             this.hypoSpray();
             this.gornYPos += 40;
+            console.log("refresh");
         },
         deleteGorn(indexToDelete) {
 
@@ -96,11 +97,11 @@ let myApp = Vue.createApp({
                 }
             };
         },
-        gornReset(){
+        gornReset() {
             this.startHere = randomColumn();
             this.gornYPos = 0;
         },
-        gornReset(){
+        gornReset() {
             this.startHere = randomColumn();
             this.gornYPos = 0;
         },
@@ -109,9 +110,9 @@ let myApp = Vue.createApp({
             hImg.src = "img/hypospray.png";
             var tile = 5;
             hImg.onload = () => {
-                for (let i = 0; i < this.lives; i++){
-                this.ctx.drawImage(hImg, tile, 5);
-                tile += 50;
+                for (let i = 0; i < this.lives; i++) {
+                    this.ctx.drawImage(hImg, tile, 5);
+                    tile += 50;
                 }
             }
         },
@@ -122,11 +123,11 @@ let myApp = Vue.createApp({
                 this.ctx.drawImage(pImg, 280, 410, 67, 67);
             }
         },
-        gornAttack(){
+        gornAttack() {
             //if caught
-                //remove image
+            //remove image
             //else missed
-                //removeLife called here
+            //removeLife called here
         },
 
         reset() {
@@ -135,16 +136,17 @@ let myApp = Vue.createApp({
         addToScore() {
             this.currentScore += 1701;
         },
-        removeLife(){
+        removeLife() {
             this.lives -= 0;
         },
         gameTime() {
-            setInterval(this.redrawEverything(), 1000);
+            setInterval(this.redrawEverything, 1000);
+            console.log("refresh 1");
         }
     },
 
     computed: {
-        message: function () {
+        message: function() {
             if (this.lives == 0) {
                 return "Game Over! Final Score: " + this.currentScore + ". Submit score below?";
             } else {
