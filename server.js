@@ -14,7 +14,7 @@ server.post("/addNewScore", function(req,res){
 
 server.get("/topHighScores", function (req, res) {
     res.set("Content-Type", "text/plain");
-    res.set("Cache-Control", "max-age=300");
+    res.set("Cache-Control", "no-cache");
     for(user in highScores){
         res.write(user + " has " + highScores[user] + " points \n");
     }
