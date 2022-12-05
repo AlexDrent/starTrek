@@ -34,14 +34,14 @@
         </div>
 
         <!-- Server Score List -->
-        <div id="scoreList">
+        <div id="scoreList" class="center">
             <form action="/topFiveScores" method="get">
                 <label for="fScores">Get list of top high scores: </label>
                 <input type="submit" value="Get List">
             </form>
             <form action="/addNewScore" method="post">
                 <label for="person">Enter 3 letter username: </label>
-                <input type="text" maxlength="3" id="person" name="user">
+                <input type="text" maxlength="3" id="user" name="user">
                 <input type="submit" value="Submit">
             </form>
         </div>
