@@ -24,6 +24,26 @@
 
 
         <p class="center" id="jsScore">{{message}}</p>
+
+        <!-- Server Score List -->
+        <div id="scoreList" class="center">
+            <form action="/addNewScore" method="post">
+                <label for="person">Enter 3 letter username: </label>
+                <input type="text" maxlength="3" id="user" name="user">
+                <label for="scores">Enter your score: </label>
+                <input type="text" id="score" name="score">
+                <input type="submit" value="Submit">
+            </form>
+            <br>
+            <form action="/topThreeScores" method="get">
+                <label for="fScores">Get list of top high scores: </label>
+                <input type="submit" value="Get List">
+            </form>
+        </div>
+
+        <br>
+
+
         <!-- Game Canvas -->
         <div id="myCanvas" class="canvaClass"> <!-- Actual playspace -->
             <canvas class="left" width="700" height="480" ref="splineDisplay">
@@ -31,19 +51,6 @@
             </canvas>
 
             <br>
-        </div>
-
-        <!-- Server Score List -->
-        <div id="scoreList" class="center">
-            <form action="/topFiveScores" method="get">
-                <label for="fScores">Get list of top high scores: </label>
-                <input type="submit" value="Get List">
-            </form>
-            <form action="/addNewScore" method="post">
-                <label for="person">Enter 3 letter username: </label>
-                <input type="text" maxlength="3" id="user" name="user">
-                <input type="submit" value="Submit">
-            </form>
         </div>
 
     </div>

@@ -7,38 +7,22 @@ let highScores = {};
 
 server.post("/addNewScore", function(req,res){
     if(!highScores[req.body.user]) highScores[req.body.user] = 0;
-    if(highScores.length <= 5){
-        highScores[req.body.user]++;
-        res.write("Your score has been recorded!");
-    }
-    else {
-        let checkScore = highScores[req.body.user];
-        for(let currentScore in highScores){
-            if(checkScore >= highScores[req.body.currentScore]){
-                highScores[req.body.currentScore] = checkScore;
-                res.write("Congrats, you've earned a spot on the high score board!");
-            }
-            else{
-                res.write("Sorry your score was too low, try again!")
-            }
-        }
-    }
+    if(!highScores[req.body.score])highScores[req.body.score] = req.body.score;
+    res.write("Your score of " + req.body.score + " has been recorded " + req.body.user + "!");
+    
     res.end();
 });
 
-server.get("/topFiveScores", function (req, res) {
+server.get("/topThreeScores", function (req, res) {
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "no-cache");
-    highScores.sort(function(x,y){
-        return y - x;
-    });
-    for(let topScores in highScores){
-        res.write(req.query.topScores + " has " + highScores[req.body.topScores] + "points \n");
+    for(user in highScores){
+        res.write(user + " has " + highScores[req.query.user] + " points \n");
     }
     res.end();
 });
 
 server.use(express.static("./pub"));
 server.listen(80, function() {
-    console.log("Server is now now running on port 80.");
+    console.log("Server is now running on port 80.");
 });
