@@ -148,7 +148,7 @@ let myApp = Vue.createApp({
             this.currentScore += 1701;
         },
         removeLife() {
-            this.lives -= 0;
+            this.lives -= 1;
         },
         gameTime() {
             setInterval(this.redrawEverything, 1000);
