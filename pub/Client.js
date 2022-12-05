@@ -151,12 +151,12 @@ let myApp = Vue.createApp({
         },
         removeLife() {
             this.lives -= 1;
-            if (this.lives <= 0){
+            if (this.lives <= 0) {
                 this.stopGame();
             }
         },
         gameTime() {
-            gameYeet = setInterval(this.redrawEverything, 1000);
+            gameYeet = setInterval(this.redrawEverything, 500);
             console.log("refresh 1");
         },
         stopGame() {
@@ -196,17 +196,17 @@ let myApp = Vue.createApp({
             this.buffer.push(key);
             lastKeyTime = currentTime;
 
-            if (this.lives != 0){
-            if (this.buffer[0] == "arrowright") {
-                this.position += 70;
-                this.redrawEverything();
-            } else if (this.buffer[0] == "arrowleft") {
-                this.position -= 70;
-                this.redrawEverything();
+            if (this.lives != 0) {
+                if (this.buffer[0] == "arrowright") {
+                    this.position += 70;
+                    this.redrawEverything();
+                } else if (this.buffer[0] == "arrowleft") {
+                    this.position -= 70;
+                    this.redrawEverything();
+                }
             }
-        }
             console.log(this.buffer);
-            return this.buffer[0];
+
         });
     }
 }).mount("#app");
