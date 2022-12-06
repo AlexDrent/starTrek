@@ -3,39 +3,6 @@ function randomColumn() {
     let currentCol = columns[Math.floor(Math.random() * columns.length)];
     return currentCol;
 }
-//-------------------------------------------------------------------
-// document.addEventListener('DOMContentLoaded', () => {
-//     'use strict';
-
-//     keyMapper();
-// });
-
-// let buffer = [];
-
-// function keyMapper() {
-//     //buffer = [];
-//     let lastKeyTime = Date.now();
-
-//     document.addEventListener('keydown', event => {
-//         const charList = 'abcdefghijklmnopqrstuvwxyz0123456789←→↓↑';
-//         const key = event.key.toLowerCase();
-
-
-//         const currentTime = Date.now();
-
-//         if (currentTime - lastKeyTime > 1000) {
-//             buffer = [];
-//         }
-
-//         buffer.push(key);
-//         lastKeyTime = currentTime;
-
-
-//         console.log(buffer);
-//         return buffer[0];
-//     });
-// }
-//---------------------------------------------------------------------------------
 
 let myApp = Vue.createApp({
 
@@ -74,10 +41,6 @@ let myApp = Vue.createApp({
             this.gornYPos += 40;
             console.log("refresh");
         },
-        deleteGorn(indexToDelete) {
-
-            this.redrawEverything();
-        }, //"→"
         movePlayer() {
             if (this.buffer[0] == "arrowright") {
                 if (this.position > 630) {
@@ -142,10 +105,6 @@ let myApp = Vue.createApp({
             }
             //else missed
             //removeLife called here
-        },
-        //reset needs work
-        reset() {
-            this.lives = 3;
         },
         addToScore() {
             this.currentScore += 1701;
